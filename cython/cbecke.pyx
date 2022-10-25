@@ -9,22 +9,22 @@ def becke_reweight_atoms(atoms,agrids,**kwargs):
 
     cdef double[:] cBragg = np.empty((len(Bragg)),'d')
     cBragg[0] = 0
-    for idx in xrange(1,len(Bragg)):
+    for idx in range(1,len(Bragg)):
         cBragg[idx] = Bragg[idx]
 
     cdef long nat = len(atoms)
     cdef double[:,:] rs = np.empty((nat,3))
-    for i in xrange(nat):
-        for j in xrange(3):
+    for i in range(nat):
+        for j in range(3):
             rs[i,j] = atoms[i].r[j]
 
     # Precompute norms outside of inner loop
     cdef double[:,:] rijs = np.empty((nat,nat),'d')
     cdef double diff 
-    for i in xrange(nat):
-        for j in xrange(nat):
+    for i in range(nat):
+        for j in range(nat):
             rijs[i,j] = 0.0
-            for k in xrange(3):
+            for k in range(3):
                 diff = (rs[i][k]-rs[j][k])
                 rijs[i,j] += diff*diff
             rijs[i,j] = sqrt(rijs[i,j])
@@ -35,29 +35,29 @@ def becke_reweight_atoms(atoms,agrids,**kwargs):
     cdef long g_abs = 0
     cdef double[:,:] all_points = np.empty((npts,3))
     for agrid in agrids:
-        for g in xrange(agrid.npts):
-            for k in xrange(3):
+        for g in range(agrid.npts):
+            for k in range(3):
                 all_points[g_abs,k] = agrid.points[g,k]
             g_abs += 1
 
     cdef double[:,:] rjps = np.empty((nat,npts),'d',order="C")
-    for at in xrange(nat):
-        for g in xrange(npts):
+    for at in range(nat):
+        for g in range(npts):
             rjps[at,g] = 0.0
-            for k in xrange(3):
+            for k in range(3):
                 diff = rs[at,k] - all_points[g,k]
                 rjps[at,g] += diff*diff
             rjps[at,g] = sqrt(rjps[at,g])
 
     cdef int[:] atnos = np.empty(nat,dtype=np.intc) 
-    for iat in xrange(nat):
+    for iat in range(nat):
         atnos[iat] = atoms[iat].atno
 
     Ps = np.empty(nat,'d')
     g_abs = 0
     for iat,agrid in enumerate(agrids):
-        for g in xrange(agrid.npts):
-            for jat in xrange(nat):
+        for g in range(agrid.npts):
+            for jat in range(nat):
                 Ps[jat] = becke_atomic_grid_p(jat,g_abs,rijs,rjps,atnos,do_becke_hetero,cBragg)
             P = Ps[iat]/sum(Ps)
             agrid.points[g,3] = P*agrid.points[g,3]
@@ -70,7 +70,7 @@ cdef inline double becke_atomic_grid_p(long jat,long g,double[:,:] rijs,double[:
     cdef double chi
     cdef double u
     cdef double a
-    for kat in xrange(rijs.shape[0]):
+    for kat in range(rijs.shape[0]):
         if jat == kat: continue
         mu = (rjps[jat,g]-rjps[kat,g])/rijs[jat,kat]
         if do_becke_hetero != 0 and atnos[jat] != atnos[kat]:
@@ -84,7 +84,7 @@ cdef inline double becke_atomic_grid_p(long jat,long g,double[:,:] rijs,double[:
     return sprod
 
 cdef inline double fbecke(double x,int n=3):
-    for i in xrange(n): x = pbecke(x)
+    for i in range(n): x = pbecke(x)
     return x
 cdef inline double pbecke(double x): 
     cdef double c1 = 1.5
