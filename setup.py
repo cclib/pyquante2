@@ -26,7 +26,10 @@ setup(name='pyquante2',
       author='Rick Muller',
       author_email='rpmuller@gmail.com',
       url='http://pyquante.sourceforge.net',
-      install_requires=['numpy'],
+      install_requires=[
+          'cython',
+          'numpy'
+      ],
       packages=['pyquante2',
                 'pyquante2.basis',
                 'pyquante2.dft',
