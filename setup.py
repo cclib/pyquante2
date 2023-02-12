@@ -1,9 +1,8 @@
-#!/usr/bin/env python
-
+from pathlib import Path
 from setuptools import setup
 from setuptools.extension import Extension
 import numpy as np
-
+from Cython.Build import cythonize
 from Cython.Distutils import build_ext
 
 
@@ -14,15 +13,11 @@ ext_modules = [
     Extension("pyquante2.cbecke",["cython/cbecke.pyx"],
                include_dirs=[np.get_include()])
     ]
-cmdclass = {'build_ext': build_ext}
-
-with open('README.md') as file:
-    long_description = file.read()
 
 setup(name='pyquante2',
       version='0.1',
       description='Python Quantum Chemistry, version 2.0',
-      long_description = long_description,
+      long_description = Path("README.md").read_text(),
       author='Rick Muller',
       author_email='rpmuller@gmail.com',
       url='http://pyquante.sourceforge.net',
@@ -46,6 +41,6 @@ setup(name='pyquante2',
                      "Programming Language :: Python",
                      "Topic :: Scientific/Engineering",
                      ],
-      cmdclass = cmdclass,
-      ext_modules = ext_modules,
+      cmdclass = {'build_ext': build_ext},
+      ext_modules = cythonize(ext_modules),
       )
