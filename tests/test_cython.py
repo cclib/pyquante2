@@ -51,4 +51,3 @@ if __name__ == '__main__':
 
     # Run the suite
     unittest.TextTestRunner(verbosity=2).run(testSuite)
-    

@@ -65,7 +65,7 @@ class basisset(object):
         ['H0 s']
         """
         return [bf.atom_symbol(geo) for bf in self.bfs]
-            
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()

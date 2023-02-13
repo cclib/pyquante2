@@ -40,7 +40,7 @@ def make_recordstrings(records,names):
 def make_recordstring(record,name):
     datastring = "\n".join("%f" % fi for fi in record)
     return record_template % dict(name=name,datastring=datastring)
-        
+
 def write_vtk(records,nxyz,oxyz,sxyz,names=None,fname = "pyq_orb.vtk"):
     sx,sy,sz = sxyz
     ox,oy,oz = oxyz
@@ -77,7 +77,7 @@ def plot_orb():
     bfs = basisset(h2,'sto3g')
     orbs = np.array([[1.0,0.0],
                      [0.0,-1.0]],'d')
-    
+
     vtk_orbs(h2,orbs,bfs)
     return
 
@@ -86,7 +86,7 @@ def plot_orb2():
     bfs = basisset(h2,'sto3g')
     orbs = np.array([[1.0,1.0],
                      [1.0,-1.0]],'d')
-    
+
     vtk_orbs(h2,orbs,bfs)
     return
 

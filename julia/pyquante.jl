@@ -14,10 +14,10 @@ dist2(dx,dy,dz) = dx*dx+dy*dy+dz*dz # Is there something in the standard library
 pairs(n::Int64) = ((i, j) for i = 1:n for j = 1:i)
 rpairs(n::Int64) = ((i,j) for i in 1:n for j in 1:n) # rectangular option to old pairs
 spairs(n::Int64) = ((i, j) for i = 1:n for j = 1:(i-1)) # subdiagonal option to old pairs
- 
+
 triangle(i::Int64) = div(i*(i+1),2)
 triangle(i::Int64,j::Int64) = i<j ? triangle(j-1)+i : triangle(i-1)+j
-                        
+
 iiterator(n::Int64) = ((i,j,k,l) for (i,j) in pairs(n) for (k,l) in pairs(n) if triangle(i,j) <= triangle(k,l))
 
 iindex(i::Int64,j::Int64,k::Int64,l::Int64) = triangle(triangle(i,j),triangle(k,l))
@@ -179,12 +179,12 @@ end
 overlap(a::CGBF,b::CGBF) = contract(overlap,a,b)
 
 function overlap(aexpn::Float64,ax::Float64,ay::Float64,az::Float64,
-                 aI::Int64,aJ::Int64,aK::Int64, 
+                 aI::Int64,aJ::Int64,aK::Int64,
                  bexpn::Float64,bx::Float64,by::Float64,bz::Float64,
                  bI::Int64,bJ::Int64,bK::Int64)
     gamma = aexpn+bexpn
     px,py,pz = gaussian_product_center(aexpn,ax,ay,az,bexpn,bx,by,bz)
-    rab2 = dist2(ax-bx,ay-by,az-bz) 
+    rab2 = dist2(ax-bx,ay-by,az-bz)
     pre = (pi/gamma)^1.5*exp(-aexpn*bexpn*rab2/gamma)
     wx = overlap1d(aI,bI,px-ax,px-bx,gamma)
     wy = overlap1d(aJ,bJ,py-ay,py-by,gamma)
@@ -198,7 +198,7 @@ end
 
 function gaussian_product_center(aexpn::Float64,ax::Float64,ay::Float64,az::Float64,
                                     bexpn::Float64,bx::Float64,by::Float64,bz::Float64)
-    return (aexpn*[ax,ay,az]+bexpn*[bx,by,bz])/(aexpn+bexpn)    
+    return (aexpn*[ax,ay,az]+bexpn*[bx,by,bz])/(aexpn+bexpn)
 end
 
 function overlap1d(la::Int64,lb::Int64,ax::Float64,bx::Float64,gamma::Float64)
@@ -333,7 +333,7 @@ function Fgamma(m::Int64,x::Float64,SMALL::Float64=1e-12)
 end
 
 function gammainc(a::Float64,x::Float64)
-    # This is the series version of gamma from pyquante. For reasons I don't get, it 
+    # This is the series version of gamma from pyquante. For reasons I don't get, it
     # doesn't work around a=1. This works alright, but is only a stopgap solution
     # until Julia gets an incomplete gamma function programmed
     if abs(a-1) < 1e-3
@@ -342,7 +342,7 @@ function gammainc(a::Float64,x::Float64)
     if x < (a+1.0)
         #Use the series representation
         gam,gln = gser(a,x)
-    else 
+    else
         #Use continued fractions
         gamc,gln = gcf(a,x)
         gam = 1-gamc
@@ -432,16 +432,16 @@ function test_gamma()
     # gammainc test functions. Test values taken from Mathematica
     # println("a=0.5 test")
     @assert maximum([gammainc(0.5,float(x)) for x in 0:10]
-            -[0, 1.49365, 1.69181, 1.7471, 1.76416, 1.76968, 
+            -[0, 1.49365, 1.69181, 1.7471, 1.76416, 1.76968,
                 1.77151, 1.77213, 1.77234, 1.77241, 1.77244]) < 1e-5
 
     # println("a=1.5 test")
     @assert maximum([gammainc(1.5,float(x)) for x in 0:10]
-            -[0, 1.49365, 1.69181, 1.7471, 1.76416, 1.76968, 
+            -[0, 1.49365, 1.69181, 1.7471, 1.76416, 1.76968,
                 1.77151, 1.77213, 1.77234, 1.77241, 1.77244]) < 1e-5
     # println("a=2.5 test")
     @assert maximum([gammainc(2.5,float(x)) for x in 0:10]
-            -[0, 0.200538, 0.59898, 0.922271, 1.12165, 1.22933, 
+            -[0, 0.200538, 0.59898, 0.922271, 1.12165, 1.22933,
                 1.2831, 1.30859, 1.32024, 1.32542, 1.32768]) < 1e-5
 end
 
@@ -502,7 +502,7 @@ function coulomb(aexpn::Float64,ax::Float64,ay::Float64,az::Float64,
 
     rab2 = dist2(ax-bx,ay-by,az-bz)
     rcd2 = dist2(cx-dx,cy-dy,cz-dz)
-    
+
     px,py,pz = gaussian_product_center(aexpn,ax,ay,az,bexpn,bx,by,bz)
     qx,qy,qz = gaussian_product_center(cexpn,cx,cy,cz,dexpn,dx,dy,dz)
     rpq2 = dist2(px-qx,py-qy,pz-qz)
@@ -510,11 +510,11 @@ function coulomb(aexpn::Float64,ax::Float64,ay::Float64,az::Float64,
     g1 = aexpn+bexpn
     g2 = cexpn+dexpn
     delta = 0.25*(1/g1+1/g2)
-    
+
     Bx = Barray(aI,bI,cI,dI,px,ax,bx,qx,cx,dx,g1,g2,delta)
     By = Barray(aJ,bJ,cJ,dJ,py,ay,by,qy,cy,dy,g1,g2,delta)
     Bz = Barray(aK,bK,cK,dK,pz,az,bz,qz,cz,dz,g1,g2,delta)
-    
+
     s = 0
     #println("$(aI+bI+cI+dI),$(aJ+bJ+cJ+dJ),$(aK+bK+cK+dK)")
     for I in 0:(aI+bI+cI+dI)
@@ -648,7 +648,7 @@ function vrr(aexpn::Float64,ax::Float64,ay::Float64,az::Float64,aI::Int64,aJ::In
     zeta,eta = aexpn+bexpn,cexpn+dexpn
     wx,wy,wz = gaussian_product_center(zeta,px,py,pz,eta,qx,qy,qz)
     #println("P: $px,$py,$pz, Q: $qx,$qy,$qz, W: $wx,$wy,$wz, $zeta,$eta")
-    
+
     val = 0
     if cK>0
         val = (qz-cz)*vrr(aexpn,ax,ay,az,aI,aJ,aK,bexpn,bx,by,bz,
@@ -799,15 +799,15 @@ function vrr_iter(aexpn::Float64,ax::Float64,ay::Float64,az::Float64,aI::Int64,a
     mtot = aI+aJ+aK+cI+cJ+cK+M
 
     vrr_terms = zeros(Float64,(aI+1,aJ+1,aK+1,cI+1,cJ+1,cK+1,mtot+1))
-    
+
     for m in 0:mtot
         vrr_terms[1,1,1, 1,1,1, m+1] = Fgamma(m,T)*Kab*Kcd/sqrt(zeta+eta)
     end
-    
+
     for i in 0:(aI-1)
         for m in 0:(mtot-i-1)
             vrr_terms[i+2,1,1, 1,1,1, m+1] = (
-                 (px-ax)*vrr_terms[i+1,1,1, 1,1,1, m+1] + 
+                 (px-ax)*vrr_terms[i+1,1,1, 1,1,1, m+1] +
                  (wx-px)*vrr_terms[i+1,1,1, 1,1,1, m+2])
 
             if i>0
@@ -1030,7 +1030,7 @@ end
 
 # ## Basis Set Data
 # Note use of curly braces here. Julia assumes that if you have square braces, you want
-# things flattened as much as possible (to be as fast as possible, I guess). Curlys 
+# things flattened as much as possible (to be as fast as possible, I guess). Curlys
 # preserve the list structure the way I would expect from Python
 
 sto3g = [

@@ -7,7 +7,7 @@ from pyquante2.graphics.contourplot import test_contour
 def test_lineplot_orbs(): return test_plot_orbs()
 def test_lineplot_bfs(): return test_plot_bfs()
 def contour_orb(): return test_contour(True)
-    
+
 def plot_h2_lineplot():
     bfs = basisset(h2,'6-31G')
     solver = rhf(h2,bfs)
@@ -30,11 +30,10 @@ def plot_orbs():
     bfs = basisset(h2,'sto3g')
     orbs = np.array([[1.0,1.0],
                      [1.0,-1.0]],'d')
-    
+
     vtk_orbital(h2,orbs,bfs)
     return
 
 if __name__ == '__main__':
     #plot_h2_lineplot()
     plot_h2_vtk()
-

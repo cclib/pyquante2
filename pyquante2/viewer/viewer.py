@@ -43,7 +43,7 @@ def draw_sphere(x,y,z,red,green,blue,rad,**kwargs):
         glMaterialfv(GL_FRONT, GL_DIFFUSE, glf((red,green,blue,1.0)))
         if specular:
             glMaterialfv(GL_FRONT, GL_SHININESS, glf([25.0]))
-            glMaterialfv(GL_FRONT, GL_SPECULAR, glf([1.0,1.0,1.0,1.0])) 
+            glMaterialfv(GL_FRONT, GL_SPECULAR, glf([1.0,1.0,1.0,1.0]))
     elif fwire_draw:
         gluQuadricDrawStyle(q,GLU_FILL)
     else:
@@ -61,7 +61,7 @@ def draw_grid():
     for i in range(10):
         glVertex3f(i*10.0,-100., 0.)
         glVertex3f(i*10.0, 100., 0.)
-        
+
         glVertex3f(-i*10.0,-100., 0.)
         glVertex3f(-i*10.0, 100., 0.)
 
@@ -94,7 +94,7 @@ def draw_cylinder(x1,y1,z1,x2,y2,z2,red,green,blue,rad,**kwargs):
         glMaterialfv(GL_FRONT, GL_DIFFUSE, glf((red,green,blue,1.0)))
         if specular:
             glMaterialfv(GL_FRONT, GL_SHININESS, glf([25.0]))
-            glMaterialfv(GL_FRONT, GL_SPECULAR, glf([1.0,1.0,1.0,1.0])) 
+            glMaterialfv(GL_FRONT, GL_SPECULAR, glf([1.0,1.0,1.0,1.0]))
     elif fwire_draw:
         gluQuadricDrawStyle(q,GLU_FILL)
     else:
@@ -151,7 +151,7 @@ class Viewer(object):
         self.win.set_size(self.width,self.height)
 
         self.init_gl()
-        
+
         self.tb = TrackballCamera(20.0)
         self.clnum = 1
         return
@@ -188,7 +188,7 @@ class Viewer(object):
         glViewport(0,0,self.width,self.height)
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
-        gluPerspective( 
+        gluPerspective(
             40.0,                            # Field Of View
             float(self.width)/float(self.height),  # aspect ratio
             1.0,                             # z near
@@ -237,7 +237,7 @@ class Viewer(object):
 class Points(object):
     def __init__(self,points): self.points = points
     def draw(self): draw_points(self.points)
-        
+
 
 class Sphere(object):
     def __init__(self,x,y,z,r,g,b,rad):

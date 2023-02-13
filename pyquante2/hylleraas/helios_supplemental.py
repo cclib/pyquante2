@@ -415,4 +415,3 @@ def test_inv_sqrt():
     print A
     X = inv_sqrt(A)
     print transform(A,X)
-

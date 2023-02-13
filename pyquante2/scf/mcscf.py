@@ -56,7 +56,7 @@ except that:
 The module is currently written to only go as complex as a GVB
 wave function. However, you can implement a general MC-SCF wave
 function by implementing a more complicated routine to update
-the CI coefficients. 
+the CI coefficients.
 """
 import numpy as np
 from pyquante2 import molecule
@@ -204,7 +204,7 @@ def ROTION(Uocc,h,Js,Ks,f,a,b,nocc,shell,verbose=False):
     Fmo = [f[i]*hmo + sum(a[i,j]*Jmo[j] + b[i,j]*Kmo[j] for j in range(nsh))
            for i in range(nsh)]
     Eel = Eone + sum(Fmo[shell[i]][i,i] for i in range(nocc))
-        
+
     Delta = np.zeros((nocc,nocc),'d')
     for i in range(nocc):
         ish = shell[i]
@@ -375,7 +375,7 @@ def guess_gvb_ci_coeffs(npair,state='0'):
             coeffs.append(inv_rt2)
         elif state == '-':
             coeffs.append(inv_rt2)
-            coeffs.append(-inv_rt2)            
+            coeffs.append(-inv_rt2)
         else: # Default state=0
             coeffs.append(1)
             coeffs.append(0)
@@ -436,7 +436,7 @@ def fab(ncore,nopen,npair,coeffs=None):
     array([[ 0. , -0.5],
            [-0.5,  0. ]])
 
-    This tests a special case for a single open shell, where a[i,i] = 
+    This tests a special case for a single open shell, where a[i,i] =
     b[i,i] = 0 for the open shell
     >>> f,a,b = fab(1,1,0)
     >>> f
@@ -477,7 +477,7 @@ def fab(ncore,nopen,npair,coeffs=None):
         for j in range(nsh):
             a[i,j] = 2*f[i]*f[j]
             b[i,j] = -f[i]*f[j]
-            
+
     # Corrections
     # b_ij = -1/2               If i and j are both open-shell
     for i in range(ncoresh,ncoresh+nopen):
@@ -521,4 +521,3 @@ if __name__ == '__main__':
         o_hf[i]
         print("  GVB")
         o_gvb[i]
-    

@@ -39,7 +39,7 @@ lih = molecule([(3,    0.00000000,     0.00000000,    -0.53999756),
                 (1,    0.00000000,     0.00000000,     1.08999756)],
                units='Angstrom',
                name="LiH")
-             
+
 co = molecule([(6,  0.00000000,     0.00000000,    -0.63546711),
                (8,  0.00000000,     0.00000000,     0.47832425)],
               units='Angstrom',
@@ -460,4 +460,3 @@ zoloft = read_xyz_lines(zoloft_dat.splitlines(),name="Zoloft")
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-

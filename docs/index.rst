@@ -30,13 +30,13 @@ every low-level routine.
 .. _MPQC: http://www.mpqc.org
 .. _`Sourceforge Project Page`: http://sourceforge.net/projects/pyquante
 
-PyQuante2 is a major rewrite of the code to make the code cleaner and more 
-flexible. In PyQuante2, all distribution will be done through the 
+PyQuante2 is a major rewrite of the code to make the code cleaner and more
+flexible. In PyQuante2, all distribution will be done through the
 `pyquante2 github site`_
 
 .. _`pyquante2 github site`: http://github.com/rpmuller/pyquante2
 
-What works so far: 
+What works so far:
 
 * Huzinaga and HGP integral methods, both in Python and with Cython wrappers to C
 * RHF, UHF wave functions
@@ -70,4 +70,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

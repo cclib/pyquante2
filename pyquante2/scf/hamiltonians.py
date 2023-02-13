@@ -118,7 +118,7 @@ class dft(rhf):
 
         H = H + 2*J + Vxc
         self.energy += Ej+Exc
-        
+
         if self.verbose: print(self.energy,E1,Ej,Exc,E0)
         E,c = geigh(H,self.i1.S)
         self.orbe = E
@@ -175,7 +175,7 @@ class rohf(hamiltonian):
     True
     """
     name = 'ROHF'
-    
+
     def converge(self,iterator=ROHFIterator,**kwargs):
         return hamiltonian.converge(self,iterator,**kwargs)
 
@@ -184,7 +184,7 @@ class rohf(hamiltonian):
         nalpha = self.geo.nup()
         nbeta = self.geo.ndown()
         norbs = len(orbs) # Da.shape[0]
-        
+
         E0 = self.geo.nuclear_repulsion()
         h = self.i1.T + self.i1.V
         E1 = 0.5*trace2(Da+Db,h)
@@ -229,6 +229,6 @@ class rohf(hamiltonian):
 
         return c
 
-        
+
 if __name__ == '__main__':
     import doctest; doctest.testmod()

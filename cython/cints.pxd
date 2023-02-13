@@ -20,5 +20,3 @@ cdef extern from "cints.h":
                              int lc, int mc, int nc, double alphac,
                              double xd, double yd, double zd, double normd,
                              int ld, int md, int nd, double alphad)
-
-

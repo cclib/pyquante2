@@ -22,12 +22,7 @@ for k in range(N):
 
     E_vec[k] = solver.energy
 
-    
+
 plt.figure()
 plt.plot(R_vec, E_vec)
 plt.show()
-
-
-
-
-                                        

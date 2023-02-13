@@ -47,7 +47,7 @@ def test_plot_orbs():
     bfs = basisset(h2,'sto3g')
     orbs = np.array([[1.0,1.0],
                      [1.0,-1.0]],'d')
-    
+
     zvals = np.linspace(-5,5)
     points = line((0,0,-5),(0,0,5))
     lineplot_orbs(points,orbs,bfs,True)
@@ -56,5 +56,3 @@ def test_plot_orbs():
 if __name__ == '__main__':
     test_plot_orbs()
     #test_plot_bfs()
-
-        

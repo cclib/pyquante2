@@ -56,7 +56,6 @@ def view_orb(mol,orb,bfs,npts=50,posval=0.05,doshow=True,planes=[]):
         mlab.pipeline.image_plane_widget(src,
                                          plane_orientation='%s_axes' % d,
                                          slice_index=ind)
-        
+
     if doshow: mlab.show()
     return
-

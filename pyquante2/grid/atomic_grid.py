@@ -51,7 +51,7 @@ def LegendreGrid(Z,**kwargs):
         nangpts = ang_mesh(float(i+1)/nrad,fineness)
         grid.append((rrad,wrad*vol,nangpts))
     return grid
-    
+
 def BeckeRadMap(x,Rmax):
     return Rmax*(1.0+x)/(1.0-x)
 
@@ -119,4 +119,3 @@ if __name__ == '__main__':
     pylab.legend(loc='lower right')
     pylab.title("Radial weights for DFT Grids")
     pylab.show()
-    
