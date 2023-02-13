@@ -41,7 +41,7 @@ class grid(object):
             bfs = self.bfamps[i,:]
             rho[i] = 2*np.dot(bfs,np.dot(D,bfs))
         return rho
-            
+
     def getdens(self,D):
         return 2*np.einsum('pI,pJ,IJ->p',self.bfamps,self.bfamps,D)
 

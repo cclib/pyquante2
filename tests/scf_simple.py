@@ -89,7 +89,7 @@ def testall():
     scf_simple(oh)
     print ("Li energy should be -7.3155")
     scf_simple(li)
-    
+
 
 if __name__ == '__main__':
     scf_simple(lih,verbose=True)

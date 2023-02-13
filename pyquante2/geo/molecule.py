@@ -97,7 +97,7 @@ class molecule(object):
     def nel(self):
         "Number of electrons of the molecule"
         return sum(atom.atno for atom in self) - self.charge
-    
+
     def nocc(self): return sum(divmod(self.nel(),2))
     def nclosed(self):
         nc,ierr = divmod(self.nel()-self.nopen(),2)
@@ -146,7 +146,7 @@ class molecule(object):
         xmin,ymin,zmin = xmin-padding,ymin-padding,zmin-padding
         xmax,ymax,zmax = xmax+padding,ymax+padding,zmax+padding
         return xmin,xmax,ymin,ymax,zmin,zmax
-        
+
 
     def stoich(self):
         """
@@ -228,7 +228,7 @@ def read_xyz_lines(lines,**kwargs):
         atno = sym2no[sym]
         atuples.append((atno,x,y,z))
     return molecule(atuples,**kwargs)
-                 
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()

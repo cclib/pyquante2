@@ -187,7 +187,7 @@ def add_mol(parent,atoms,uc=None,units='cartesian',**kwargs):
 def atomtuples(mol):
     "Convert a molecule subtree to sym,x,y,z atomtuple"
     return [atomtuple(atom) for atom in get_atoms(mol)]
-        
+
 def atomtuple(atom):
     "Convert an atom subtree to sym,x,y,z atomtuple"
     x,y,z = get_xyz(atom)
@@ -229,7 +229,7 @@ def find_bonds_in_mol(mol,bondscale=1.1):
             rj0 = get_vdw_radius(atj)
             xj,yj,zj = get_xyz(atj)
             idj = get_id(atj)
-                
+
             dx,dy,dz = xi-xj,yi-yj,zi-zj
             r0 = (ri0+rj0)/2
             r = cart_distance(dx,dy,dz)
@@ -292,7 +292,7 @@ def natoms(mol):
 def randomindex(lim=10**8):
     import random
     return random.randrange(lim)
-    
+
 def read_cml(fname):
     return ET.parse(fname)
 

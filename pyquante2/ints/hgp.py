@@ -28,9 +28,9 @@ def ERI_hgp(a,b,c,d):
     >>> s2 = cgbf((0,0,1),(0,0,0),[1],[1])
     >>> isclose(ERI_hgp(s,s,s2,s2),0.842701)
     True
-    """ 
+    """
     # This should be faster if I can get it to work, but having trouble passing
-    # in to double *anorms, etc. 
+    # in to double *anorms, etc.
     if a.contracted and b.contracted and c.contracted and d.contracted:
         acoefs,anorms,aexps = a.cne_list()
         bcoefs,bnorms,bexps = b.cne_list()
@@ -373,4 +373,4 @@ def vrr(xyza,norma,lmna,alphaa,
 
 if __name__ == '__main__':
     import doctest; doctest.testmod()
-    
+

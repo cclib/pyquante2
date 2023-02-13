@@ -9,7 +9,7 @@ def pyq1_rohf(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,mult=3):
     from PyQuante.MG2 import MG2 as MolecularGrid
     from PyQuante.LA2 import mkdens,geigh,trace2,simx
     from PyQuante.Ints import getJ,getK
-    
+
     print ("PyQ1 ROHF run")
     atoms = Molecule('Pyq1',atomlist=atomtuples,multiplicity=mult)
 
@@ -77,7 +77,7 @@ def pyq1_rohf(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,mult=3):
     from PyQuante.MG2 import MG2 as MolecularGrid
     from PyQuante.LA2 import mkdens,geigh,trace2,simx
     from PyQuante.Ints import getJ,getK
-    
+
     print ("PyQ1 ROHF run")
     atoms = Molecule('Pyq1',atomlist=atomtuples,multiplicity=mult)
 
@@ -139,7 +139,7 @@ def pyq1_rohf(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,mult=3):
         orbe,mo_orbs = np.linalg.eigh(F)
         orbs = np.dot(orbs,mo_orbs)
     return energy,orbe,orbs
-    
+
 
 def pyq1_dft(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,
              xcname='SVWN'):
@@ -148,7 +148,7 @@ def pyq1_dft(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,
     from PyQuante.MG2 import MG2 as MolecularGrid
     from PyQuante.LA2 import mkdens,geigh,trace2
     from PyQuante.Ints import getJ
-    
+
     print ("PyQ1 DFT run")
     atoms = Molecule('Pyq1',atomlist=atomtuples)
 
@@ -162,7 +162,7 @@ def pyq1_dft(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,
     grid_nrad = settings.DFTGridRadii
     grid_fineness = settings.DFTGridFineness
 
-    gr = MolecularGrid(atoms,grid_nrad,grid_fineness) 
+    gr = MolecularGrid(atoms,grid_nrad,grid_fineness)
     gr.set_bf_amps(bfs)
 
     orbe,orbs = geigh(h,S)
@@ -178,11 +178,11 @@ def pyq1_dft(atomtuples=[(2,(0,0,0))],basis = '6-31G**',maxit=10,
 
         F = h+2*J+Vxc
         orbe,orbs = geigh(F,S)
-        
+
         Ej = 2*trace2(D,J)
         Eone = 2*trace2(D,h)
         energy = Eone + Ej + Exc + enuke
-        
+
         print (i,energy,Eone,Ej,Exc,enuke)
         if np.isclose(energy,eold):
             break
@@ -284,7 +284,7 @@ def pyq2_dft(atomtuples=[(2,0,0,0)],basis = '6-31G**',maxit=10,xcname='svwn'):
             break
         eold = energy
     return energy
-    
+
 
 if __name__ == '__main__':
     pyq1_rohf()
@@ -292,4 +292,4 @@ if __name__ == '__main__':
     #pyq1_dft()
     #pyq2_dft()
     #func_compare()
-    
+

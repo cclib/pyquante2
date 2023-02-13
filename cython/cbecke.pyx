@@ -20,7 +20,7 @@ def becke_reweight_atoms(atoms,agrids,**kwargs):
 
     # Precompute norms outside of inner loop
     cdef double[:,:] rijs = np.empty((nat,nat),'d')
-    cdef double diff 
+    cdef double diff
     for i in range(nat):
         for j in range(nat):
             rijs[i,j] = 0.0
@@ -49,7 +49,7 @@ def becke_reweight_atoms(atoms,agrids,**kwargs):
                 rjps[at,g] += diff*diff
             rjps[at,g] = sqrt(rjps[at,g])
 
-    cdef int[:] atnos = np.empty(nat,dtype=np.intc) 
+    cdef int[:] atnos = np.empty(nat,dtype=np.intc)
     for iat in range(nat):
         atnos[iat] = atoms[iat].atno
 
@@ -86,11 +86,11 @@ cdef inline double becke_atomic_grid_p(long jat,long g,double[:,:] rijs,double[:
 cdef inline double fbecke(double x,int n=3):
     for i in range(n): x = pbecke(x)
     return x
-cdef inline double pbecke(double x): 
+cdef inline double pbecke(double x):
     cdef double c1 = 1.5
     cdef double c2 = 0.5
     return c1*x-c2*x*x*x
-cdef inline double sbecke(double x,int n=3): 
+cdef inline double sbecke(double x,int n=3):
     cdef double c1 = 0.5
     cdef double c2 = 1
     return c1*(c2-fbecke(x,n))

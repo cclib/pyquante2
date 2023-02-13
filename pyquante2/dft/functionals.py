@@ -7,7 +7,7 @@ Notes on functionals in pyquante2.
   3. Need to decide how to handle redundant information, i.e.
      - rhoa and rhob when non-spin-polarized
        This might make tracking total density and the zeta (spin polarization)
-       worthwhile; the latter could just be zero (or False or None or whatever) 
+       worthwhile; the latter could just be zero (or False or None or whatever)
      - return values from non-spin-polarized calculations.
 
 """
@@ -247,9 +247,9 @@ def cpbe_point(rhoa,rhob,gama,gamb,gamab,tol=1e-10):
         dPhi_dZ = np.power(1.+Zeta,-1./3.)/3.-np.power(1.-Zeta,-1./3.)/3.
         dPhi_drhoa = dPhi_dZ*dZ_drhoa
         dPhi_drhob = dPhi_dZ*dZ_drhob
-        
+
         dKs_drho = Ks/(6*rho)
-        
+
         dT_dPhi = -T/Phi
         dT_dKs = -T/Ks
         dT_drhoa = -T/rho + dT_dPhi*dPhi_drhoa + dT_dKs*dKs_drho
@@ -269,12 +269,12 @@ def cpbe_point(rhoa,rhob,gama,gamb,gamab,tol=1e-10):
 
         dH_dPhi = 3*H/Phi
         dH_dT = bet*Phi3/(1.+bet/gam*N/D)*(D*dN_dT-N*dD_dT)/D/D
-            
+
         dH_dA = bet*Phi3/(1.+bet/gam*N/D)*(D*dN_dA-N*dD_dA)/D/D
-        
+
         dH_drhoa = dH_dPhi*dPhi_drhoa + dH_dT*dT_drhoa + dH_dA*dA_drhoa
         dH_drhob = dH_dPhi*dPhi_drhob + dH_dT*dT_drhob + dH_dA*dA_drhob
-        
+
         vca = vc0a + H + rho*dH_drhoa
         vcb = vc0b + H + rho*dH_drhob
     # Havent done the dE_dgamma derives yet
@@ -355,7 +355,7 @@ def cpbe_lsd(rhoa,rhob):
     vca = comm + eczet
     vcb = comm - eczet
     return eps,vca,vcb
-    
+
 def pbe_gcor(a,a1,b1,b2,b3,b4,rtrs):
 #      subroutine gcor2(a,a1,b1,b2,b3,b4,rtrs,gg,ggrs)
 # slimmed down version of gcor used in pw91 routines, to interpolate

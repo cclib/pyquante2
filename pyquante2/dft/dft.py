@@ -11,18 +11,18 @@ def get_xc(grid,D,**kwargs):
 
     xfunc = xname[xcname]
     cfunc = cname[xcname]
-        
+
     rho = grid.getdens(D)
     fx,dfxa = xfunc(rho)
     if cfunc:
         fc,dfca,dfcb = cfunc(rho,rho)
     else:
         fc=dfca=dfcb=0
-        
+
     w = grid.points[:,3]
     Vxc = np.einsum('g,g,gI,gJ->IJ',w,dfxa+dfca,grid.bfamps,grid.bfamps)
     # The fx comes from either the up or the down spin, whereas the fc comes from
     #  both (which is why x is called with either one, and c is called with both
     Exc = np.dot(w,2*fx+fc)
     return Exc,Vxc
-    
+

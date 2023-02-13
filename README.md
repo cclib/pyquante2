@@ -34,8 +34,8 @@ PyQuante2. My goals are:
 * Clean code with a consistent style reflecting Python 2.7;
 * Easily understood code structure;
 * Much better test suite structure, use of nosetests as a matter of
-  course. 
-* Extensions 
+  course.
+* Extensions
   - Written only in Cython
   - Not required for base code to function
 
@@ -45,7 +45,7 @@ prepared to deal with code performance at a later time.
 
 There is an IPython notebook surveying some of the new features that
 can be viewed as a [gist](https://gist.github.com/rpmuller/5745404) or
-[on nbviewer](http://nbviewer.ipython.org/5745404). 
+[on nbviewer](http://nbviewer.ipython.org/5745404).
 
 ## What works so far:
 * Huzinaga and HGP integral methods, both in Python and with Cython wrappers to C

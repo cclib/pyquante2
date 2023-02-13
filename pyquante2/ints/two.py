@@ -26,7 +26,7 @@ def ERI(a,b,c,d):
     >>> s2 = cgbf((0,0,1),(0,0,0),[1],[1])
     >>> isclose(ERI(s,s,s2,s2),0.842701)
     True
-    """ 
+    """
     if d.contracted:
         return sum(cd*ERI(pd,c,a,b) for (cd,pd) in d)
     return coulomb_repulsion(a.origin,a.norm,a.powers,a.exponent,

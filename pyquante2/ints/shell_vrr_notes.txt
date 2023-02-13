@@ -15,7 +15,7 @@ for a shell integration scheme!
 
 *** Get general code working
 *** Think about specific code
-*** 
+***
 
 1. Compute vrr_ssss[m]
 2. Compute vrr_psss[m] and vrr_psps[m] from vrr_ssss[m]

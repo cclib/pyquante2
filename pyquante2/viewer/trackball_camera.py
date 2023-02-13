@@ -41,7 +41,7 @@ __version__ = "1.0"
 # and David M. Ciemiewicz, Mark Grossman, Henry Moreton, and Paul Haeberli
 #
 # Note: See the following for more information on quaternions:
-# 
+#
 # - Shoemake, K., Animating rotation with quaternion curves, Computer
 #   Graphics 19, No 3 (Proc. SIGGRAPH'85), 245-254, 1985.
 # - Pletinckx, D., Quaternion calculus as a basic tool in computer
@@ -57,7 +57,7 @@ __version__ = "1.0"
 # the name of Silicon Graphics, Inc. not be used in advertising
 # or publicity pertaining to distribution of the software without specific,
 # written prior permission.
-# 
+#
 # THE MATERIAL EMBODIED ON THIS SOFTWARE IS PROVIDED TO YOU "AS-IS"
 # AND WITHOUT WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR OTHERWISE,
 # INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY OR
@@ -70,7 +70,7 @@ __version__ = "1.0"
 # ADVISED OF THE POSSIBILITY OF SUCH LOSS, HOWEVER CAUSED AND ON
 # ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE
 # POSSESSION, USE OR PERFORMANCE OF THIS SOFTWARE.
-# 
+#
 # US Government Users Restricted Rights
 # Use, duplication, or disclosure by the Government is subject to
 # restrictions set forth in FAR 52.227.19(c)(2) or subparagraph
@@ -80,7 +80,7 @@ __version__ = "1.0"
 # Unpublished-- rights reserved under the copyright laws of the
 # United States.  Contractor/manufacturer is Silicon Graphics,
 # Inc., 2011 N.  Shoreline Blvd., Mountain View, CA 94039-7311.
-                                
+
 import math
 import copy
 
@@ -158,7 +158,7 @@ def q_normalize(q):
     """Return a normalized quaternion"""
     mag = (q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3])
     if mag != 0:
-        for i in range(4): 
+        for i in range(4):
             q[i] /= mag;
     return q
 
@@ -234,7 +234,7 @@ class TrackballCamera(object):
         """When you click or drag the primary mouse button, scale the mouse
         x & y to the range [-1.0,1.0] and call this routine to roll the trackball
         and update the modelview matrix.
-        
+
         The initial click should set dragging to False.
         """
         if dragging:
@@ -253,8 +253,8 @@ class TrackballCamera(object):
         """When you click or drag a secondary mouse button, scale the mouse
         x & y to the range [-1.0,1.0] and call this routine to change the
         trackball's camera radius and update the modelview matrix.
-        
-        The initial click should set dragging to False.        
+
+        The initial click should set dragging to False.
         """
         if self.last_x:
             dx = norm_mouse_x - self.last_x
@@ -292,15 +292,15 @@ class TrackballCamera(object):
         # rotate this view by the current orientation
         glMultMatrixf(glf(self._matrix()))
         return
-        
+
     def _matrix(self):
         """return the rotation matrix for the trackball"""
         return q_matrix(self.rot_quat)
 
-    def _rotate(self, norm_mouse_x, norm_mouse_y): 
+    def _rotate(self, norm_mouse_x, norm_mouse_y):
         """Pass the x and y coordinates of the last and current positions of
         the mouse, scaled so they are in the range [-1.0,1.0].
-        
+
         Simulate a track-ball.  Project the points onto the virtual
         trackball, then figure out the axis of rotation, which is the cross
         product of LAST NEW and O LAST (O is the center of the ball, 0,0,0)
@@ -311,7 +311,7 @@ class TrackballCamera(object):
         """
         # handle special case
         if (self.last_x == norm_mouse_x and self.last_y == norm_mouse_y):
-            # Zero rotation 
+            # Zero rotation
             return [ 0.0, 0.0, 0.0, 1.0]
 
         #
@@ -326,7 +326,7 @@ class TrackballCamera(object):
         # aka the axis of rotation
         #
         a = v3cross(new,last)
-        
+
         #
         # Figure out how much to rotate around that axis (phi)
         #

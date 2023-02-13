@@ -18,4 +18,4 @@ try:
     from pyquante2.graphics.contourplot import contourplot
 except:
     pass
-    
+

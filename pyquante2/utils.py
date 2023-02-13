@@ -63,7 +63,7 @@ def Fgamma(m,x):
 #     """
 #     from scipy.special import gamma,gammainc
 #     return gamma(a)*gammainc(a,x)
-    
+
 def gamm_inc(a,x):
     """
     Incomple gamma function \gamma; computed from NumRec routine gammp.
@@ -178,7 +178,7 @@ def geigh(H,S):
     A = cholorth(S)
     E,U = np.linalg.eigh(simx(H,A))
     return E,np.dot(A,U)
-    
+
 def parseline(line,format):
     """\
     Given a line (a string actually) and a short string telling

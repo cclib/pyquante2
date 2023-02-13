@@ -189,7 +189,7 @@ def hterm(l,m,n,l2,m2,n2):
     elif delta == (0,1,-1):
         x = 2*(m+1)*n
         a = -2*x
-        b = x 
+        b = x
         c = x*(2*l-4*m-n-3)
     elif delta == (-1,0,0):
         x = 2*l
@@ -300,7 +300,7 @@ def pekeris(Z,wmax,spin):
                 sys.exit()
             H[i,j] = a*Z + b
             S[i,j] = c
-                
+
     return (H,S)
 
 def transform(A,B):

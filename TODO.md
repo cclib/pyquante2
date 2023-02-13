@@ -11,8 +11,8 @@
   in the Ps loop, but also loop over all the atoms in becke_atomic_...
 
 ## DFT errors
-* The slater exchange has a fairly high error (2e-6) in the test suite. 
-  Is there a bug here? The value occurs at high densities. Does not 
+* The slater exchange has a fairly high error (2e-6) in the test suite.
+  Is there a bug here? The value occurs at high densities. Does not
   seem to be an incorrect factor value.
 * cvwn has a similar bug with the dfb value. The erroneous value
   occurs at 0 values of nb.
@@ -24,7 +24,7 @@
 ## Questions to consider
 * Move xyz readers into IO module?
 * Should we require scipy to gain access to the incomplete gamma
-  functions? 
+  functions?
 * How about scipy for the Legendre or Lebedev stuff?
 
 ## Things I'd like more of
