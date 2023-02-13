@@ -51,4 +51,3 @@ cdef extern from "chgp.h":
         int lc, int mc, int nc, double alphac,
         double xd, double yd, double zd, double normd, double alphad,
         int m)
-

@@ -162,6 +162,3 @@ if __name__ == '__main__':
         profsuite()
     else:
         runsuite()
-
-
-

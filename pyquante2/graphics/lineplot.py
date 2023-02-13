@@ -56,5 +56,3 @@ def test_plot_orbs():
 if __name__ == '__main__':
     test_plot_orbs()
     #test_plot_bfs()
-
-

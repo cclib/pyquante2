@@ -59,4 +59,3 @@ def view_orb(mol,orb,bfs,npts=50,posval=0.05,doshow=True,planes=[]):
 
     if doshow: mlab.show()
     return
-

@@ -62,4 +62,3 @@ double vrr_recursive(double xa, double ya, double za, double norma,
 	   int m);
 
 int iindex(int la, int ma, int na, int lc, int mc, int nc, int m);
-

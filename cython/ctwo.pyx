@@ -74,4 +74,3 @@ def vrr_recursive(double xa,double ya,double za,double norma,int la,int ma,int n
 				  xb,yb,zb,normb,alphab,
 				  xc,yc,zc,normc,lc,mc,nc,alphac,
 				  xd,yd,zd,normd,alphad,m)
-

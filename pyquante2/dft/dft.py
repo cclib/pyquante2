@@ -25,4 +25,3 @@ def get_xc(grid,D,**kwargs):
     #  both (which is why x is called with either one, and c is called with both
     Exc = np.dot(w,2*fx+fc)
     return Exc,Vxc
-

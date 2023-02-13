@@ -589,4 +589,3 @@ double vrr_recursive(double xa, double ya, double za, double norma,
 #undef EPS
 #undef FPMIN
 #undef SMALL
-

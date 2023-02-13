@@ -32,7 +32,3 @@ class orbman(object):
             if abs(c) > self.cutoff:
                 print("%10.4f %5s" % (c,l))
         return
-
-
-
-

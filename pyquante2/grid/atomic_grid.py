@@ -119,4 +119,3 @@ if __name__ == '__main__':
     pylab.legend(loc='lower right')
     pylab.title("Radial weights for DFT Grids")
     pylab.show()
-

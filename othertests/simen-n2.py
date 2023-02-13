@@ -26,8 +26,3 @@ for k in range(N):
 plt.figure()
 plt.plot(R_vec, E_vec)
 plt.show()
-
-
-
-
-

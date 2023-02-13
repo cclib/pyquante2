@@ -460,4 +460,3 @@ zoloft = read_xyz_lines(zoloft_dat.splitlines(),name="Zoloft")
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-

@@ -111,5 +111,3 @@ if __name__ == '__main__':
         debugsuite()
     else:
         runsuite()
-
-

@@ -239,4 +239,3 @@ def colorscale(mag, cmin, cmax):
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-

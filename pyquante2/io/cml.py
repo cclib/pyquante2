@@ -392,4 +392,3 @@ def write_cml_multigeo(fname,geos,uc=None,units='cartesian',**kwargs):
 
 if __name__ == '__main__':
     test()
-

@@ -58,4 +58,3 @@ can be viewed as a [gist](https://gist.github.com/rpmuller/5745404) or
 Feel free to fork this if it interests you. The PyQuante code is still
 around, so I'm not rushing through the process, I'm just taking as
 much time as I feel I need to do this properly.
-

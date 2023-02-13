@@ -383,5 +383,3 @@ def test_vrr():
 if __name__ == '__main__':
     test_vrr()
     #print list(shell_iterator(1))
-
-

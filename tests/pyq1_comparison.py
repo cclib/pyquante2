@@ -292,4 +292,3 @@ if __name__ == '__main__':
     #pyq1_dft()
     #pyq2_dft()
     #func_compare()
-

@@ -338,4 +338,3 @@ class TrackballCamera(object):
         phi = 2.0 * math.asin(t)
 
         return q_from_axis_angle(a,phi)
-
