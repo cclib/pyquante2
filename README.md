@@ -1,4 +1,17 @@
 # PyQuante2
+
+This is a fork of https://github.com/rpmuller/pyquante2 with the following improvements:
+- Python 3.7-3.11 is supported
+- Continuous integration has been migrated to GitHub Actions with testing all the above versions in both pure Python virtualenvs and conda environments, both using pip
+- Cython is (currently) required for building from source
+
+To install,
+```bash
+python -m pip install git+https://github.com/cclib/pyquante2.git@branches/py37
+```
+
+---
+
 PyQuante is an open-source suite of programs for developing quantum chemistry methods. The program is written in the Python programming language, but has many “rate-determining” modules also written in C for speed. The resulting code, though not as fast as Jaguar, NWChem, Gaussian, or MPQC, is much easier to understand and modify. The goal of this software is not necessarily to provide a working quantum chemistry program (although it will hopefully do that), but rather to provide a well-engineered set of tools so that scientists can construct their own quantum chemistry programs without going through the tedium of having to write every low-level routine.
 
 ## Installation
