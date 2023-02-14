@@ -41,13 +41,11 @@ jobs:
         run: python -m pip install -U pip setuptools
       - name: Print pip config
         run: python -m pip config list
-      - name: Install dependencies
-        run: python -m pip install -r requirements.txt
       - name: Install test dependencies
         run: python -m pip install pytest-cov
       - name: Install package
         run: |
-          python -m pip install --no-deps -vvv .
+          python -m pip install -vvv .
           # Importing the Cython inside the source tree is broken unless the
           # compiled products are next to the source code, symlinked or
           # otherwise.
