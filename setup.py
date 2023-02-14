@@ -2,7 +2,6 @@ from pathlib import Path
 from setuptools import setup
 from setuptools.extension import Extension
 import numpy as np
-from Cython.Build import cythonize
 from Cython.Distutils import build_ext
 
 
@@ -24,7 +23,6 @@ setup(
     author_email="rpmuller@gmail.com",
     url="http://pyquante.sourceforge.net",
     install_requires=["numpy", "cython"],
-    # setup_requires=["numpy", "cython"],
     packages=[
         "pyquante2",
         "pyquante2.basis",
@@ -44,5 +42,5 @@ setup(
         "Topic :: Scientific/Engineering",
     ],
     cmdclass={"build_ext": build_ext},
-    ext_modules=cythonize(ext_modules),
+    ext_modules=ext_modules,
 )
